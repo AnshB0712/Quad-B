@@ -8,6 +8,7 @@ import {
   Loader,
   Text,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import React from "react";
 import { useParams } from "react-router-dom";
 import TextDetails from "./TextDetails";
@@ -20,6 +21,7 @@ const Details = () => {
       id.toString().startsWith("tt") ? "imdb" : "thetvdb"
     }=${id}`
   );
+  const matches = useMediaQuery("(min-width: 400px)");
 
   if (!state.data && !state.error)
     return (
@@ -41,14 +43,14 @@ const Details = () => {
         radius="sm"
       >
         <Center p="md" style={{ backdropFilter: "grayscale(100%) blur(8px)" }}>
-          <Group>
+          <Group style={{ flexDirection: matches ? "row" : "column" }}>
             <Image
               radius={"lg"}
               fit="contain"
               src={state?.data?.image?.original ?? state?.data?.image?.medium}
               maw={"40%"}
               alt={state?.data?.name}
-              style={{ aspectRatio: "3/2" }}
+              style={{ aspectRatio: !matches ? "3/5" : "3/2" }}
               fallbackSrc="https://placehold.co/300x160?text=Placeholder"
             />
 

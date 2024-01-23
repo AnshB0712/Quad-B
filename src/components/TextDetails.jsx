@@ -25,7 +25,7 @@ const TextDetails = ({ data }) => {
         </Text>
       </Stack>
 
-      <Button radius={"md"} mt={2} w={300} display={"block"}>
+      <Button fullWidth radius={"md"} mt={2} max={400} display={"block"}>
         Book Ticket
       </Button>
     </Stack>
